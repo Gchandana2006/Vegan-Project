@@ -7,7 +7,13 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // Middleware
-app.use(cors())
+// CORS - Allow all origins (Vercel frontend, localhost, etc.)
+// In production, you can restrict to specific domains if needed
+app.use(cors({
+  origin: '*', // Allow all origins for now
+  credentials: false,
+  optionsSuccessStatus: 200
+}))
 app.use(express.json())
 app.use(morgan('dev'))
 
